@@ -104,7 +104,7 @@ class Tricolor extends Standard
                 imagesetpixel($image, $x, $y, $overall);
             }
         }
-        $result = $this->makePngFromGd($image);
+        $result = $this->makeAvifFromGd($image);
         return $result;
     }
 }

@@ -31,7 +31,7 @@ class Chrd extends Gigascreen
                     $result = $this->buildAnimatedGif($gifImages, $delays);
                 } else {
                     $image = $this->exportData($parsedData, false);
-                    $result = $this->makePngFromGd($image);
+                    $result = $this->makeAvifFromGd($image);
                 }
             }
         } elseif ($this->colorType == '18') {

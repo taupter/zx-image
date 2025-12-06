@@ -27,7 +27,7 @@ class Standard extends Plugin
                 $result = $this->buildAnimatedGif($gifImages, $delays);
             } else {
                 $image = $this->exportData($parsedData, false);
-                $result = $this->makePngFromGd($image);
+                $result = $this->makeAvifFromGd($image);
             }
         }
         return $result;

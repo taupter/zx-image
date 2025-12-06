@@ -15,7 +15,6 @@ class Converter
     protected string $sourceFileContents = '';
     protected string $sourceFilePath = '';
     protected string $resultFilePath;
-    protected string $cacheDirMarkerPath;
     protected int $cacheDeletionPeriod = 300; //start cache clearing every 5 minutes
     protected int $cacheDeletionAmount = 1000; //delete not more than 1000 images at once
     protected int $cacheExpirationLimit;
@@ -59,7 +58,6 @@ class Converter
     public function setCachePath(string $cachePath): self
     {
         $this->cachePath = $cachePath . DIRECTORY_SEPARATOR;
-        $this->cacheDirMarkerPath = $this->cachePath . DIRECTORY_SEPARATOR . '_marker';
         return $this;
     }
 
@@ -179,11 +177,18 @@ class Converter
         return $resultMime;
     }
 
+    public function setCacheFileName(string $cacheFileName): void
+    {
+        $this->cacheFileName = $cacheFileName;
+    }
+
     public function getCacheFileName(): string
     {
-        $parametersHash = $this->getHash();
+        if ($this->cacheFileName === null) {
+            $parametersHash = $this->getHash();
+            $this->cacheFileName = $this->cachePath . $parametersHash;
+        }
 
-        $this->cacheFileName = $this->cachePath . $parametersHash;
         return $this->cacheFileName;
     }
 
@@ -285,51 +290,5 @@ class Converter
             }
         }
         return $result;
-    }
-
-    public function checkCacheClearing(): void
-    {
-        if ($date = $this->getCacheLastClearedDate()) {
-            $now = time();
-            if ($now - $date >= $this->cacheDeletionPeriod) {
-                touch($this->cacheDirMarkerPath);
-                $this->clearOutdatedCache();
-            }
-        }
-    }
-
-    protected function getCacheLastClearedDate(): ?int
-    {
-        $date = null;
-
-        if (!is_file($this->cacheDirMarkerPath)) {
-            file_put_contents($this->cacheDirMarkerPath, ' ');
-            return 1;
-        }
-        if (is_file($this->cacheDirMarkerPath)) {
-            $date = filemtime($this->cacheDirMarkerPath);
-        }
-        return $date;
-    }
-
-    protected function clearOutdatedCache(): void
-    {
-        $c = 0;
-        $now = time();
-        if ($handler = opendir($this->cachePath)) {
-            while (($fileName = readdir($handler)) !== false) {
-                $filePath = $this->cachePath . $fileName;
-                if (is_file($filePath)) {
-                    if ($now - filectime($filePath) > $this->cacheExpirationLimit) {
-                        $c++;
-                        unlink($filePath);
-                    }
-                }
-                if ($c >= $this->cacheDeletionAmount) {
-                    break;
-                }
-            }
-            closedir($handler);
-        }
     }
 }

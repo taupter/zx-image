@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ZxImage\Plugin;
 
+use GdImage;
 use ZxImage\Converter;
 use ZxImage\Filter\Filter;
 
@@ -255,7 +256,7 @@ abstract class Plugin implements Configurable
         if ($bits = $this->loadBits()) {
             $parsedData = $this->parseScreen($bits);
             $image = $this->exportData($parsedData, false);
-            $result = $this->makePngFromGd($image);
+            $result = $this->makeAvifFromGd($image);
         }
         return $result;
     }
@@ -266,15 +267,19 @@ abstract class Plugin implements Configurable
 
     abstract protected function exportData(array $parsedData, bool $flashedImage = false);
 
-    /**
-     * @param resource $image
-     * @return string
-     */
-    protected function makePngFromGd($image): string
+    protected function makePngFromGd(GdImage $image): string
     {
         $this->resultMime = 'image/png';
         ob_start();
         imagepng($image);
+        return ob_get_clean();
+    }
+
+    protected function makeAvifFromGd(GdImage $image): string
+    {
+        $this->resultMime = 'image/avif';
+        ob_start();
+        imageavif($image, null, -1);
         return ob_get_clean();
     }
 
