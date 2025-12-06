@@ -22,7 +22,7 @@ class Converter
     protected ?int $border = null;
     protected float $zoom = 1;
     protected int $rotation = 0;
-    protected string $cacheFileName;
+    protected ?string $cacheFileName = null;
     protected bool $cacheEnabled = false;
     protected ?string $resultMime = null;
     protected string $basePath;
