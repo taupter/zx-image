@@ -110,7 +110,7 @@ class Bsp extends Standard
                     $result = $this->buildAnimatedGif($gifImages, $delays);
                 } else {
                     $image = $this->exportDataMerged($parsedData1, $parsedData2, false);
-                    $result = $this->makeAvifFromGd($image);
+                    $result = $this->makePngFromGd($image);
                 }
             }
         }

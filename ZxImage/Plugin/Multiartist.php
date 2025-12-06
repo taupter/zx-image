@@ -109,7 +109,7 @@ class Multiartist extends Gigascreen
                 } else {
                     $this->mghMixedBorder = true;
                     $image = $this->exportDataMerged($parsedData1, $parsedData2, false);
-                    $result = $this->makeAvifFromGd($image);
+                    $result = $this->makePngFromGd($image);
                 }
             }
         }

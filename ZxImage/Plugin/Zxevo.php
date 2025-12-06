@@ -15,7 +15,7 @@ class Zxevo extends Plugin
         $result = null;
         if ($gdObject = $this->loadResource()) {
             $image = $this->adjustImage($gdObject);
-            $result = $this->makeAvifFromGd($image);
+            $result = $this->makePngFromGd($image);
         }
         return $result;
     }

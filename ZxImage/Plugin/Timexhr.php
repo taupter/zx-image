@@ -17,7 +17,7 @@ class Timexhr extends Standard
         if ($bits = $this->loadBits()) {
             $parsedData = $this->parseScreen($bits);
             $image = $this->exportData($parsedData, false);
-            $result = $this->makeAvifFromGd($image);
+            $result = $this->makePngFromGd($image);
         }
         return $result;
     }

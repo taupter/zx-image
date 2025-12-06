@@ -26,7 +26,7 @@ class Attributes extends Standard
                 $result = $this->buildAnimatedGif($gifImages, $delays);
             } else {
                 $image = $this->exportData($parsedData, false);
-                $result = $this->makeAvifFromGd($image);
+                $result = $this->makePngFromGd($image);
             }
         }
         return $result;
