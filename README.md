@@ -62,6 +62,7 @@ The library is also capable of working without Composer autoloader.
 * "bsp" - Border Screen by Trefi. Size: varies. Supports 6912, gigascreen, byte for border data, as well as optional border "pixel" data.
 * "bmc4" - multicolor 8*4 with border. Size: 11904. 6144 bytes of pixel data, 1536 bytes of attributes, 4224 bytes of border "pixels".
 * "gigascreen" - two standard screens shown as 50hz software flickering. Size: 13824. Contains two standard SCR files: 6144 bytes of pixel data, 768 bytes of attributes, 6144 bytes of pixel data, 768 bytes of attributes.
+* "lce" - two standard screens shown at once on an interlaced 512*384 display, without flickering. Size: 13824, same layout as "gigascreen". First screen supplies even output lines, second screen supplies odd ones, every pixel is doubled horizontally.
 * "chrd" - CHR$ format by Alone Coder, supports monochrome, standard and gigascreen images of variable width/height. Size: variable according to images width/height. Data is contained char by char separately.
 * "monochrome" - standard ZX Spectrum monochrome screen without attributes. Size: 6144, contains only pixel data.
 * "flash" - Screens made for hardware "Flash color" modification. Size: 6912. Same format as standard screen, but flash bit is used for mixing paper+ink for ink and forcing black paper.

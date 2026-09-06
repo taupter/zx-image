@@ -15,6 +15,7 @@ use ZxImage\Plugin\FramePluginInterface;
 use ZxImage\Plugin\Gigascreen;
 use ZxImage\Plugin\Grf;
 use ZxImage\Plugin\Hidden;
+use ZxImage\Plugin\Lce;
 use ZxImage\Plugin\Lowresgs;
 use ZxImage\Plugin\Mc;
 use ZxImage\Plugin\Mlt;
@@ -56,6 +57,7 @@ enum PluginType: string
     case Gigascreen = 'gigascreen';
     case Grf = 'grf';
     case Hidden = 'hidden';
+    case Lce = 'lce';
     case Lowresgs = 'lowresgs';
     case Mc = 'mc';
     case Mlt = 'mlt';
@@ -104,6 +106,7 @@ enum PluginType: string
             self::Gigascreen => Gigascreen::class,
             self::Grf => Grf::class,
             self::Hidden => Hidden::class,
+            self::Lce => Lce::class,
             self::Lowresgs => Lowresgs::class,
             self::Mc => Mc::class,
             self::Mlt => Mlt::class,

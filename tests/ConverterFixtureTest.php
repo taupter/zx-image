@@ -191,6 +191,7 @@ final class ConverterFixtureTest extends TestCase
         yield 'bsp' => [new ConversionFixture(type: 'bsp', sourceFileName: 'example.bsp', expectedFileName: 'bsp.png', border: 1)];
         yield 'bmc4' => [new ConversionFixture(type: 'bmc4', sourceFileName: 'example.bmc4', expectedFileName: 'bmc4.png', border: 1)];
         yield 'gigascreen' => [new ConversionFixture(type: 'gigascreen', sourceFileName: 'example.img', expectedFileName: 'gigascreen.png')];
+        yield 'lce' => [new ConversionFixture(type: 'lce', sourceFileName: 'example.lce', expectedFileName: 'lce.png')];
         yield 'mg1' => [new ConversionFixture(type: 'mg1', sourceFileName: 'example.mg1', expectedFileName: 'mg1.png')];
         yield 'mg2' => [new ConversionFixture(type: 'mg2', sourceFileName: 'example.mg2', expectedFileName: 'mg2.png')];
         yield 'mg4' => [new ConversionFixture(type: 'mg4', sourceFileName: 'example.mg4', expectedFileName: 'mg4.png')];

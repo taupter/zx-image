@@ -102,6 +102,7 @@ When enabled, converted images are stored as files. The cache key is derived fro
 | `attributes` | ZX Spectrum | [attributes.md](formats/attributes.md) |
 | `hidden` | ZX Spectrum (debug view) | [hidden.md](formats/hidden.md) |
 | `gigascreen` | ZX Spectrum | [gigascreen.md](formats/gigascreen.md) |
+| `lce` | ZX Spectrum | [lce.md](formats/lce.md) |
 | `tricolor` | ZX Spectrum | [tricolor.md](formats/tricolor.md) |
 | `multicolor` | ZX Spectrum | [multicolor.md](formats/multicolor.md) |
 | `multicolor4` | ZX Spectrum | [multicolor.md](formats/multicolor.md) |
